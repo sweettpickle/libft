@@ -57,7 +57,12 @@ SRC = ft_strcat.c \
         ft_lstdel.c \
 		ft_lstadd.c \
 		ft_lstiter.c \
-		ft_lstmap.c
+		ft_lstmap.c \
+		ft_range.c \
+		ft_sqrt.c \
+		ft_str_is_printable.c \
+		ft_swap.c \
+		ft_div_mod.c \
 
 OBJ = $(addsuffix .o, $(basename $(SRC)))
 
@@ -69,8 +74,8 @@ all: $(NAME)
 
 $(NAME):
 	@gcc -Wall -Wextra -Werror -c $(SRC)
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+	@ar rc $(NAME) $(OBJ)
+	@ranlib $(NAME)
 
 clean:
 	@rm -f $(OBJ)

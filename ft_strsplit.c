@@ -6,7 +6,7 @@
 /*   By: cdoreah <cdoreah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/11 16:37:34 by cdoreah           #+#    #+#             */
-/*   Updated: 2019/09/13 22:36:19 by cdoreah          ###   ########.fr       */
+/*   Updated: 2019/09/17 22:28:09 by cdoreah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static char		*skip_c(char const *str, char c)
 	return ((char *)str);
 }
 
-static int		len_w(const char *str, char c)
+static int		len_w(char *str, char c)
 {
 	size_t		i;
 
@@ -47,36 +47,38 @@ static int		len_w(const char *str, char c)
 	return (i);
 }
 
-static void		ft_clear(char **mas, size_t i)
+static void		ft_clear(char **mas)
 {
-	while (i--)
-		free(mas[i]);
+	while (*mas)
+		free(*mas++);
 	free(mas);
 }
 
 char			**ft_strsplit(char const *s, char c)
 {
 	char		**mas;
+	char		*str;
 	size_t		w;
-	size_t		i;
 
-	if (!s)
+	if (!s ||
+	!(mas = (char **)malloc(sizeof(char *) * (words(s, c) + 1))))
 		return (NULL);
 	w = words(s, c);
-	if ((!(mas = (char **)malloc(sizeof(char *) * (w + 1)))) || (w > w + 1))
+	if (w > w + 1)
 		return (NULL);
-	i = 0;
-	while (i < w)
+	str = (char *)s;
+	while (w--)
 	{
-		s = skip_c(s, c);
-		if (!(mas[i] = ft_strnew(len_w(s, c))))
+		str = skip_c(str, c);
+		if (!(*mas = ft_strnew(len_w(str, c))))
 		{
-			ft_clear(mas, i);
+			ft_clear(mas);
 			return (NULL);
 		}
-		ft_strncpy(mas[i++], s, len_w(s, c));
-		s += len_w(s, c);
+		ft_strncpy(*mas, str, len_w(str, c));
+		mas++;
+		str += len_w(str, c);
 	}
-	mas[i] = NULL;
-	return (mas);
+	*mas = NULL;
+	return (mas - words(s, c));
 }

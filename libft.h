@@ -6,7 +6,7 @@
 /*   By: cdoreah <cdoreah@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/12 00:10:21 by cdoreah           #+#    #+#             */
-/*   Updated: 2019/09/13 22:10:31 by cdoreah          ###   ########.fr       */
+/*   Updated: 2019/09/17 22:28:09 by cdoreah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void				ft_putendl(char const *s);
 void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr(int n);
 void				ft_putnbr_fd(int n, int fd);
-void				ft_putstr(char *str);
+void				ft_putstr(char const *str);
 void				ft_putstr_fd(char const *s, int fd);
 char				*ft_strcat(char *dest, const char *src);
 char				*ft_strchr(const char *s, int c);
@@ -47,14 +47,13 @@ void				ft_strclr(char *s);
 char				*ft_strcpy(char *dest, const char *src);
 void				ft_strdel(char **as);
 int					ft_strcmp(const char *s1, const char *s2);
-char				*ft_strdup(char *src);
-char				*ft_strdup(char *src);
+char				*ft_strdup(const char *src);
 int					ft_strequ(char const *s1, char const *s2);
 void				ft_striter(char *s, void (*f)(char *));
 void				ft_striteri(char *s, void (*f)(unsigned int, char *));
 char				*ft_strjoin(char const *s1, char const *s2);
 size_t				ft_strlcat(char *dest, const char *src, size_t size);
-size_t				ft_strlen(char *str);
+size_t				ft_strlen(const char *str);
 char				*ft_strmap(char const *s, char (*f)(char));
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char				*ft_strncat(char *dest, const char *src, size_t n);
