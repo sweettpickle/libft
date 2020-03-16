@@ -1,3 +1,2 @@
 # libft
-Проект школы 21. 
-Реализация функций на Си.
+Progect's description you find in file "libft.en.pdf"
